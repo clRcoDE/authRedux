@@ -1,0 +1,5 @@
+export const REQUEST_BEGINS = 'REQUEST_BEGINS'
+
+export  const REQUEST_SUCCESS = 'REQUEST_SUCCESS'  
+
+export const REQUEST_FAILED = 'REQUEST_FAILED'
