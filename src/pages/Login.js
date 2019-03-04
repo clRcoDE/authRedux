@@ -30,7 +30,7 @@ class Login extends Component {
     }
 
     onSucceed = (username) => {
-        this.props.navigation.navigate('Home',{ username :`${username}` })
+        this.props.navigation.navigate('HomeScreen',{ username :`${username}` })
     }
 
     onFail = () => {

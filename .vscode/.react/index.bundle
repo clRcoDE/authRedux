@@ -90417,10 +90417,25 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _reactNavigation = _$$_REQUIRE(_dependencyMap[1], "react-navigation");
 
-  var _Home = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../pages/Home"));
+  var _HomeScreen = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "../pages/HomeScreen"));
 
   var _Login = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "../pages/Login"));
 
+  var _Modal = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "../pages/Modal"));
+
+  var HomeStack = (0, _reactNavigation.createStackNavigator)({
+    HomeScreen: {
+      screen: _HomeScreen.default
+    },
+    Modal: _Modal.default
+  }, {
+    defaultNavigationOptions: function defaultNavigationOptions(_ref) {
+      var navigation = _ref.navigation;
+      return {
+        headerTransparent: true
+      };
+    }
+  });
   var AuthStack = (0, _reactNavigation.createStackNavigator)({
     Login: _Login.default
   }, {
@@ -90428,12 +90443,12 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   });
   var AppStarterSwitch = (0, _reactNavigation.createSwitchNavigator)({
     Auth: AuthStack,
-    Home: _Home.default
+    Home: HomeStack
   });
   var AppContainer = (0, _reactNavigation.createAppContainer)(AppStarterSwitch);
   var _default = AppContainer;
   exports.default = _default;
-},584,[1,585,708,709],"src\\Routes\\index.js");
+},584,[1,585,708,709,712],"src\\Routes\\index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   module.exports = {
     get createAppContainer() {
@@ -109747,17 +109762,18 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _reactNative = _$$_REQUIRE(_dependencyMap[10], "react-native");
 
-  var _temp,
-      _jsxFileName = "c:\\Users\\d.omidi\\Projects\\authRedux\\src\\pages\\Home.js";
+  var _class,
+      _temp,
+      _jsxFileName = "c:\\Users\\d.omidi\\Projects\\authRedux\\src\\pages\\HomeScreen.js";
 
   var _components = {
-    Home: {
-      displayName: "Home"
+    HomeScreen: {
+      displayName: "HomeScreen"
     }
   };
 
   var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index.default)({
-    filename: "c:\\Users\\d.omidi\\Projects\\authRedux\\src\\pages\\Home.js",
+    filename: "c:\\Users\\d.omidi\\Projects\\authRedux\\src\\pages\\HomeScreen.js",
     components: _components,
     locals: [module],
     imports: [_react.default]
@@ -109769,21 +109785,23 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     };
   }
 
-  var Home = _wrapComponent("Home")((_temp = function (_Component) {
-    (0, _inherits2.default)(Home, _Component);
+  var dim = _reactNative.Dimensions.get('window');
 
-    function Home() {
+  var HomeScreen = _wrapComponent("HomeScreen")((_temp = _class = function (_Component) {
+    (0, _inherits2.default)(HomeScreen, _Component);
+
+    function HomeScreen() {
       var _getPrototypeOf2;
 
       var _this;
 
-      (0, _classCallCheck2.default)(this, Home);
+      (0, _classCallCheck2.default)(this, HomeScreen);
 
       for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
       }
 
-      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(Home)).call.apply(_getPrototypeOf2, [this].concat(args)));
+      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(HomeScreen)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
       _this.logoutUser = function _callee() {
         return _regenerator.default.async(function _callee$(_context) {
@@ -109816,53 +109834,108 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       return _this;
     }
 
-    (0, _createClass2.default)(Home, [{
+    (0, _createClass2.default)(HomeScreen, [{
       key: "render",
       value: function render() {
         return _react.default.createElement(_reactNative.View, {
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 18
+            lineNumber: 36
           }
         }, _react.default.createElement(_reactNative.Text, {
           style: styles.HomeText,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 19
+            lineNumber: 37
           }
         }, " Home "), _react.default.createElement(_reactNative.Text, {
           style: styles.UsernameText,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 20
+            lineNumber: 38
           }
         }, " welcome ", this.props.navigation.getParam('username', 'NO-NAME'), " ! "), _react.default.createElement(_reactNative.TouchableOpacity, {
           onPress: this.logoutUser.bind(this),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 23
+            lineNumber: 41
           }
         }, _react.default.createElement(_reactNative.Text, {
           style: styles.LogoutText,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 24
+            lineNumber: 42
           }
         }, "Logout")));
       }
     }]);
-    return Home;
-  }(_react.Component), _temp));
+    return HomeScreen;
+  }(_react.Component), _class.navigationOptions = function (_ref) {
+    var navigation = _ref.navigation;
 
-  var _default2 = Home;
+    HellModal = function HellModal() {
+      navigation.navigate('Modal');
+    };
+
+    HellBack = function HellBack() {
+      navigation.goBack();
+    };
+
+    return {
+      headerTransparent: true,
+      headerTitle: _react.default.createElement(_reactNative.View, {
+        style: styles.headerInput,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      }, _react.default.createElement(_reactNative.TextInput, {
+        style: styles.input,
+        placeholder: 'search news',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      })),
+      headerLeft: _react.default.createElement(_reactNative.TouchableOpacity, {
+        style: styles.sideButtons,
+        onPress: HellBack.bind(_class),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      }, _react.default.createElement(_reactNative.Text, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      }, "Back")),
+      headerRight: _react.default.createElement(_reactNative.TouchableOpacity, {
+        style: styles.sideButtons,
+        onPress: HellModal.bind(_class),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      }, _react.default.createElement(_reactNative.Text, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      }, "More"))
+    };
+  }, _temp));
+
+  var _default2 = HomeScreen;
   exports.default = _default2;
 
   var styles = _reactNative.StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: '#5041f4'
     },
     HomeText: {
       fontSize: 20,
@@ -109875,9 +109948,27 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     LogoutText: {
       fontSize: 20,
       color: 'red'
+    },
+    headerInput: {
+      justifyContent: 'center',
+      width: dim.width * (72 / 100),
+      height: 40,
+      borderRadius: 50,
+      backgroundColor: 'white'
+    },
+    input: {
+      flex: 1,
+      alignItems: 'center',
+      textAlign: 'center'
+    },
+    sideButtons: {
+      width: dim.width * (11 / 100),
+      alignItems: 'center',
+      height: 30,
+      justifyContent: 'center'
     }
   });
-},708,[1,561,101,19,20,27,30,33,47,200,2],"src\\pages\\Home.js");
+},708,[1,561,101,19,20,27,30,33,47,200,2],"src\\pages\\HomeScreen.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -109948,7 +110039,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       };
 
       _this.onSucceed = function (username) {
-        _this.props.navigation.navigate('Home', {
+        _this.props.navigation.navigate('HomeScreen', {
           username: "" + username
         });
       };
@@ -110251,6 +110342,97 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var REQUEST_FAILED = 'REQUEST_FAILED';
   exports.REQUEST_FAILED = REQUEST_FAILED;
 },711,[],"src\\services\\types.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[7], "react"));
+
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "./../../node_modules/react-transform-hmr/lib/index.js"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
+
+  var _jsxFileName = "c:\\Users\\d.omidi\\Projects\\authRedux\\src\\pages\\Modal.js";
+  var _components = {
+    Modal: {
+      displayName: "Modal"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index.default)({
+    filename: "c:\\Users\\d.omidi\\Projects\\authRedux\\src\\pages\\Modal.js",
+    components: _components,
+    locals: [module],
+    imports: [_react.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Modal = _wrapComponent("Modal")(function (_Component) {
+    (0, _inherits2.default)(Modal, _Component);
+
+    function Modal() {
+      (0, _classCallCheck2.default)(this, Modal);
+      return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Modal).apply(this, arguments));
+    }
+
+    (0, _createClass2.default)(Modal, [{
+      key: "render",
+      value: function render() {
+        return _react.default.createElement(_reactNative.View, {
+          style: styles.container,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 7
+          }
+        }, _react.default.createElement(_reactNative.Text, {
+          style: styles.modalText,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 8
+          }
+        }, " Modal Page "));
+      }
+    }]);
+    return Modal;
+  }(_react.Component));
+
+  var _default2 = Modal;
+  exports.default = _default2;
+
+  var styles = _reactNative.StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: 'royalblue',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    modalText: {
+      fontSize: 30,
+      color: '#003'
+    }
+  });
+},712,[1,561,19,20,27,30,33,47,200,2],"src\\pages\\Modal.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 

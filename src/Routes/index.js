@@ -3,8 +3,9 @@
 import {createAppContainer , createSwitchNavigator  , createStackNavigator} from 'react-navigation'
 
 
-import Home from '../pages/Home'
+import HomeScreen from '../pages/HomeScreen'
 import Login from '../pages/Login'
+import Modal from '../pages/Modal'
 // import Signup from '../pages/Signup'
 
 
@@ -14,11 +15,18 @@ import Login from '../pages/Login'
 
 
 
-// const HomeStack = createSwitchNavigator(
-//     {
-//       Home:Home
-//     }
-//   )
+const HomeStack = createStackNavigator(
+    {
+      HomeScreen:{screen :HomeScreen , },
+      Modal:Modal
+    },{
+      defaultNavigationOptions:({navigation})=>{
+        return{
+          headerTransparent:true
+        }
+      }
+    }
+  )
   
   
   const AuthStack = createStackNavigator(
@@ -34,7 +42,7 @@ import Login from '../pages/Login'
   const AppStarterSwitch = createSwitchNavigator(
     {
       Auth:AuthStack,
-      Home:Home
+      Home:HomeStack
     }
   )
   
