@@ -1,24 +1,46 @@
 {
-    "employees": [
-      {
-        "id": 1,
-        "first_name": "Sebastian",
-        "last_name": "Eschweiler",
-        "email": "sebastian@codingthesmartway.com"
-      },
-      {
-        "id": 2,
-        "first_name": "Steve",
-        "last_name": "Palmer",
-        "email": "steve@codingthesmartway.com"
-      },
-      {
-        "id": 3,
-        "first_name": "Ann",
-        "last_name": "Smith",
-        "email": "ann@codingthesmartway.com"
-      }
-    ]
-
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "username": "aaa",
+      "password": "111",
+      "postId": 1,
+      "Token":"pOdi77AYd9OIcnsouMAZ"
+    },
+    {
+      "id": 2,
+      "username": "bbb",
+      "password": "222",
+      "postId": 2,
+      "Token":"TVEgHiR4JW48eYz2TCMQ"
+    },
+    {
+      "id": 3,
+      "username": "ccc",
+      "password": "333",
+      "postId": 3,
+      "Token":"W0t8LelJJZedaQGET1zd"
+    },
+    {
+      "id": 4,
+      "username": "ddd",
+      "password": "444",
+      "postId": 4,
+      "Token":"0UFDq7qsAPKJAX6NvyFQ"
+    },
+    {
+      "id": 5,
+      "username": "eee",
+      "password": "555",
+      "postId": 5,
+      "Token":"cm5ldQDBVNgGU75bvXWs"
+    }
+  ]
 }
-  

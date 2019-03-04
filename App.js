@@ -11,18 +11,11 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
-import {createAppContainer , createSwitchNavigator  , createStackNavigator} from 'react-navigation'
 import {createStore , applyMiddleware } from 'redux'
+import AppContainer from './src/Routes'
 
 
 import rootReducer from './src/services/reducers/rootReducer'
-
-
-
-import Home from './src/pages/Home'
-import Login from './src/pages/Login'
-import Signup from './src/pages/Signup'
-
 
 
 
@@ -33,11 +26,23 @@ export const store = createStore(rootReducer ,applyMiddleware(thunk))
 
 
  export default class App extends Component{
+
+  someEvent() {
+    // call navigate for AppNavigator here:
+    // this.navigator &&
+    //   this.navigator.dispatch(
+    //     NavigationActions.navigate({ routeName: someRouteName })
+    //   );
+  }
   render() {
     return (
     <Provider  store={store} >
 
-    <AppContainer/>
+<AppContainer
+        // ref={nav => {
+        //   this.navigator = nav;
+        // }}
+      />
     
     </Provider>)
   }
@@ -46,30 +51,4 @@ export const store = createStore(rootReducer ,applyMiddleware(thunk))
 
 
 
-
-const HomeStack = createSwitchNavigator(
-  {
-    Home:Home
-  }
-)
-
-
-const AuthStack = createStackNavigator(
-  {
-    Login:Login,
-    Signup:Signup
-  },{
-    headerMode:'none'
-  }
-)
-
-
-const AppStarterSwitch = createSwitchNavigator(
-  {
-    Auth:AuthStack,
-    Home:HomeStack
-  }
-)
-
-const AppContainer = createAppContainer(AppStarterSwitch)
 
